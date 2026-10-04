@@ -1,0 +1,1 @@
+{"name":"Promo Ledger","short_name":"Promo Ledger","description":"A local-first ledger for paid creator promotions","start_url":"./#dashboard","scope":"./","display":"standalone","background_color":"#f6f3ec","theme_color":"#f6f3ec","icons":[{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}

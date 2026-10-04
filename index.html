@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f3ec" />
+    <meta
+      name="description"
+      content="A local-first ledger for paid creator promotions."
+    />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="./fonts/bricolage-grotesque-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./fonts/instrument-sans-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Promo Ledger</title>
+  </head>
+  <body>
+    <div class="pl-shell">
+      <aside class="pl-sidebar" aria-label="Main navigation">
+        <a class="pl-logo" href="#dashboard" aria-label="Promo Ledger home"
+          >Promo Ledger<span aria-hidden="true"></span
+        ></a>
+        <nav class="pl-nav" aria-label="Sections">
+          <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+          <a href="#promos" data-nav="promos">All promos</a>
+          <a href="#brands" data-nav="brands">Brands</a>
+          <a href="#invoices" data-nav="invoices">Invoices</a>
+          <a href="#settings" data-nav="settings">Settings</a>
+        </nav>
+        <p class="pl-sidebar-note">Your ledger stays on this device.</p>
+      </aside>
+      <main class="pl-main" id="app" tabindex="-1">
+        <p class="pl-loading">Opening your ledger…</p>
+      </main>
+    </div>
+
+    <dialog
+      class="pl-dialog pl-form-dialog"
+      id="promo-dialog"
+      aria-labelledby="promo-dialog-title"
+    >
+      <form id="promo-form" novalidate>
+        <header class="pl-dialog-header">
+          <div>
+            <p class="pl-overline">Your record</p>
+            <h2 id="promo-dialog-title">Add promo</h2>
+          </div>
+          <button
+            class="pl-close"
+            type="button"
+            data-close="promo-dialog"
+            aria-label="Close form"
+          >
+            Close
+          </button>
+        </header>
+        <div class="pl-form-grid">
+          <label class="pl-field"
+            ><span>Brand <em>*</em></span
+            ><input
+              name="brand"
+              maxlength="100"
+              autocomplete="organization"
+              required
+              placeholder="e.g. Fernway Skincare"
+          /></label>
+          <label class="pl-field"
+            ><span>Deliverable <em>*</em></span
+            ><input
+              name="deliverable"
+              maxlength="140"
+              required
+              placeholder="e.g. Reel + 3 stories"
+          /></label>
+          <label class="pl-field"
+            ><span>Platform</span
+            ><input
+              name="platform"
+              maxlength="80"
+              placeholder="e.g. Instagram Reel"
+          /></label>
+          <label class="pl-field"
+            ><span>Fee <em>*</em></span
+            ><span class="pl-money"
+              ><span class="pl-currency-symbol" aria-hidden="true">$</span
+              ><input
+                name="amount"
+                type="number"
+                min="0"
+                max="999999999"
+                step="0.01"
+                inputmode="decimal"
+                required
+                placeholder="0.00" /></span
+          ></label>
+          <label class="pl-field"
+            ><span>Status</span
+            ><select name="status">
+              <option value="draft">Draft</option>
+              <option value="invoiced">Invoiced</option>
+              <option value="paid">Paid</option>
+            </select></label
+          >
+          <label class="pl-field"
+            ><span>Payment due</span><input name="dueDate" type="date"
+          /></label>
+          <label class="pl-field"
+            ><span>Invoice sent</span><input name="invoiceDate" type="date"
+          /></label>
+          <label class="pl-field"
+            ><span>Paid on</span><input name="paidDate" type="date"
+          /></label>
+          <label class="pl-field"
+            ><span>Invoice number</span
+            ><input
+              name="invoiceNumber"
+              maxlength="80"
+              placeholder="e.g. INV-0142"
+          /></label>
+          <label class="pl-field"
+            ><span>Paid by</span
+            ><input
+              name="payer"
+              maxlength="140"
+              placeholder="Company or agency"
+          /></label>
+          <label class="pl-field"
+            ><span>Contact</span
+            ><input name="contact" maxlength="140" placeholder="Name or email"
+          /></label>
+          <label class="pl-field"
+            ><span>Payment method</span
+            ><input
+              name="method"
+              maxlength="100"
+              placeholder="e.g. Bank transfer"
+          /></label>
+          <label class="pl-field pl-field-wide"
+            ><span>Notes</span
+            ><textarea
+              name="notes"
+              rows="4"
+              maxlength="4000"
+              placeholder="Anything you want to remember about this deal"
+            ></textarea>
+          </label>
+        </div>
+        <p class="pl-form-error" id="form-error" role="alert" hidden></p>
+        <footer class="pl-dialog-actions">
+          <button
+            class="pl-btn pl-btn--ghost"
+            type="button"
+            data-close="promo-dialog"
+          >
+            Cancel</button
+          ><button class="pl-btn pl-btn--primary" type="submit">
+            Save promo
+          </button>
+        </footer>
+      </form>
+    </dialog>
+
+    <dialog
+      class="pl-dialog pl-detail-dialog"
+      id="detail-dialog"
+      aria-labelledby="detail-title"
+    >
+      <div id="detail-content"></div>
+    </dialog>
+    <input
+      id="backup-file"
+      type="file"
+      accept="application/json,.json"
+      hidden
+    />
+    <div
+      class="pl-toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></div>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

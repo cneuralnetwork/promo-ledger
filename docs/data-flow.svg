@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="244" viewBox="0 0 820 244" role="img" aria-labelledby="title description">
+  <title id="title">Where Promo Ledger keeps your data</title>
+  <desc id="description">The browser app saves promo records to IndexedDB on this device. The user can download JSON backups or CSV exports.</desc>
+  <rect width="820" height="244" fill="#f6f3ec"/>
+  <rect x="24" y="48" width="212" height="150" rx="12" fill="#fff" stroke="#ddd5c5"/>
+  <text x="48" y="88" fill="#1d1b16" font-family="Arial,sans-serif" font-size="22" font-weight="700">Promo Ledger</text>
+  <text x="48" y="119" fill="#5f5a4f" font-family="Arial,sans-serif" font-size="15">Your browser tab</text>
+  <circle cx="211" cy="76" r="5" fill="#f5b82e"/>
+  <path d="M249 123h72" stroke="#5f5a4f" stroke-width="2" stroke-linecap="round"/>
+  <path d="m313 116 9 7-9 7" fill="none" stroke="#5f5a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="335" y="48" width="211" height="150" rx="12" fill="#fff" stroke="#ddd5c5"/>
+  <text x="359" y="88" fill="#1d1b16" font-family="Arial,sans-serif" font-size="22" font-weight="700">IndexedDB</text>
+  <text x="359" y="119" fill="#5f5a4f" font-family="Arial,sans-serif" font-size="15">Saved on this device</text>
+  <text x="359" y="144" fill="#5f5a4f" font-family="Arial,sans-serif" font-size="15">No account or server</text>
+  <path d="M558 123h72" stroke="#5f5a4f" stroke-width="2" stroke-linecap="round"/>
+  <path d="m622 116 9 7-9 7" fill="none" stroke="#5f5a4f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="643" y="48" width="153" height="150" rx="12" fill="#fff" stroke="#ddd5c5"/>
+  <text x="667" y="88" fill="#1d1b16" font-family="Arial,sans-serif" font-size="20" font-weight="700">Your files</text>
+  <text x="667" y="119" fill="#5f5a4f" font-family="Arial,sans-serif" font-size="15">JSON backup</text>
+  <text x="667" y="144" fill="#5f5a4f" font-family="Arial,sans-serif" font-size="15">CSV export</text>
+  <text x="24" y="225" fill="#5f5a4f" font-family="Arial,sans-serif" font-size="13">Files are created only when you choose Download backup or Export CSV.</text>
+</svg>
